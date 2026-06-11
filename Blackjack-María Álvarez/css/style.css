@@ -38,7 +38,7 @@ body {
 }
 
 /* 
-   INFO
+   INFORMACION
  */
 #info {
 	text-align: center;
@@ -98,6 +98,7 @@ body {
 	box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
+/* musica on/off */
 #musica {
 	background: linear-gradient(135deg, #2196f3, #1565c0);
 	color: white;
