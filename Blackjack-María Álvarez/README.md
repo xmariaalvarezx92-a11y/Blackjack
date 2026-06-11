@@ -36,6 +36,25 @@ Abrir el archivo index.html en un navegador web.
 - Reiniciar partida
 - Música on/off
 
+## UML
++----------------+
+|     Carta      |
++----------------+
+| valor : int    |
+| palo : string  |
+| img : Image    |
++----------------+
+
+La clase Carta define cada carta del juego, almacena su valor,
+palo e imagen asociada para su representación en el canvas.
+
+## Problemas encontrados e implementaciones:
+
+- Inicialmente las cartas no aparecían debido a problemas de carga de imágenes.
+- Se implementó un sistema de sonido para las cartas, las partidas ganadas y perdidas.
+- El crupier se modificó utilizando setTimeout para que las cartas aparezcan progresivamente y no directamente.
+- Se incorporó música de fondo que es opcional.
+
 ## Autor
 
 María Álvarez Castillo
