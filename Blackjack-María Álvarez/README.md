@@ -30,7 +30,7 @@ Abrir el archivo index.html en un navegador web.
 4. El crupier robará cartas automáticamente.
 5. El resultado aparecerá en pantalla.
 
-## Botones:
+## Botones
 - Pedir carta
 - Plantarme
 - Reiniciar partida
