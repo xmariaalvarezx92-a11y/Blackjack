@@ -37,6 +37,7 @@ Abrir el archivo index.html en un navegador web.
 - Música on/off
 
 ## UML
+```text
 +----------------+
 |     Carta      |
 +----------------+
@@ -44,6 +45,7 @@ Abrir el archivo index.html en un navegador web.
 | palo : string  |
 | img : Image    |
 +----------------+
+```
 
 La clase Carta define cada carta del juego, almacena su valor,
 palo e imagen asociada para su representación en el canvas.
