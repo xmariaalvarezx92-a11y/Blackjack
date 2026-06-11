@@ -18,6 +18,7 @@ sonidoPerder.preload = "auto";
 const fondo = new Audio("sonidos/fondo.mp3");
 fondo.loop = true;
 
+// Función para la musica ambiental del juego
 function Musica() {
 	if(fondo.paused) {
 		fondo.play();
@@ -26,7 +27,7 @@ function Musica() {
 	}
 }
 
-// CARTA
+// Clase carta
 class Carta {
 	constructor(valor, palo) {
 		this.valor = valor;
@@ -37,7 +38,7 @@ class Carta {
 	}
 }
 
-// VARIABLES
+// Variables utilizadas para el resto de funciones
 const palos = ["S", "H", "D", "C"];
 
 let cartas = [];
@@ -46,14 +47,13 @@ let cartasCrupier = [];
 let indiceCarta = 0;
 let puntosCrupier = 0;
 let puntosJugador = 0;
-let a = 0;
 
 let jugadorX = 50;
 let crupierX = 50;
 
 const info = document.getElementById("info");
 
-// CREAR BARAJA
+// Funcion que crea la baraja 
 function crearBaraja() {
 	cartas = [];
 
@@ -63,21 +63,22 @@ function crearBaraja() {
 		}
 	}
 
-	// shuffle correcto
+	// mezcla las cartas de forma aletoria
 	for (let i = cartas.length - 1; i > 0; i--) {
 		let j = Math.floor(Math.random() * (i + 1));
 		[cartas[i], cartas[j]] = [cartas[j], cartas[i]];
 	}
 }
 
+// Llamamos a la función para que se ejecute
 crearBaraja();
 
-// DIBUJAR CARTA (SIN ONLOAD)
+// Funcion para cargar la imagen de las cartas
 function dibujarCarta(carta, x, y) {
 	ctx.drawImage(carta.img, x, y, 239, 335);
 }
 
-// PUNTOS
+// Funcion que calcula los puntos objtenidos en total
 function calcularPuntos(lista) {
 	let total = 0;
 	for (let c of lista) {
@@ -87,17 +88,18 @@ function calcularPuntos(lista) {
 }
 
 
-// PEDIR CARTA
+// Funcion que nos da una carta aleatoria de la baraja cada vez que se pide
 function pedirCarta() {
 	if (indiceCarta >= 8) return;
 
-	// sonido (sin bloquear)
+	// sonido
 	sonidoCarta.currentTime = 0;
 	sonidoCarta.play().catch(() => {});
 
 	const carta = cartas[indiceCarta];
 	cartasJugador.push(carta);
 
+	//dibuja
 	dibujarCarta(carta, jugadorX, 50);
 	jugadorX += 260;
 
@@ -106,6 +108,7 @@ function pedirCarta() {
 	info.innerHTML = `Puntuación jugador: ${calcularPuntos(cartasJugador)}`;
 }
 
+// Funcion que comprueba los puntos del jugador y del crupier
 function comprobarGanador() {
 
 	let puntosJugador = calcularPuntos(cartasJugador);
@@ -143,13 +146,13 @@ function comprobarGanador() {
 	info.innerHTML = msg;
 }
 
+// El crupier sigue robando hasta alcanzar al menos 17 puntos
 function sacarCartaCrupier() {
 
 	if (puntosCrupier >= 17) {
 		comprobarGanador();
 		return;
 	}
-
 
 	const carta = cartas[indiceCarta];
 
@@ -171,7 +174,7 @@ function sacarCartaCrupier() {
 	setTimeout(sacarCartaCrupier, 1000);
 }
 
-// PLANTARSE
+// Funcion para dejar de pedir cartas y darle paso al crupier
 function plantarme() {
 	document.getElementById("pedir").disabled = true;
 	document.getElementById("plantar").disabled = true;
@@ -184,7 +187,7 @@ function plantarme() {
 	
 }
 
-// RESET
+// Funcion para resetear la partida
 function playagain() {
 	location.reload();
 }
