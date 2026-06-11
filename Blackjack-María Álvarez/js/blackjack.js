@@ -136,7 +136,11 @@ function comprobarGanador() {
 		sonidoPerder.currentTime = 0;
 		sonidoPerder.play().catch(() => {});
 	}
-	else if (puntosCrupier === puntosJugador) msg += "<br><b>Empate..</b>";
+	else if (puntosCrupier === puntosJugador) {
+		msg += "<br><b>Empate..</b>";
+		sonidoPerder.currentTime = 0;
+		sonidoPerder.play().catch(() => {});
+	}
 	else if (puntosCrupier < puntosJugador){
 		msg += "<br><b>Has ganado!</b>";
 		sonidoGanar.currentTime = 0;
